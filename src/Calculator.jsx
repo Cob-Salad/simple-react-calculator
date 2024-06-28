@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Button from "./Button";
 import './App.css';
+let previous_value = null
 
 export default function Calculator() {
     const [display, setDisplay] = useState("");
@@ -22,9 +23,15 @@ export default function Calculator() {
             }
         } else if (value === "Clear") {
             setDisplay("");
-        } else {
+
+        } else if (previous_value === "=") {
+            console.log("previous satarefa")
+            setDisplay("")
+            setDisplay(value)
+        } else {   
             setDisplay(display + value);
         }
+        previous_value = value
     }
 
     return(
